@@ -1,7 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import logo from '../../assets/logo.svg';
-import {auth} from '../../firebase/firebase.utils';
+import {auth} from '../../firebase/firebase.utils';// Lets us deal with firebase database 
+import {connect} from 'react-redux';
 import './header.styles.scss';
 
 const Header = ({currentUser}) => (
@@ -25,4 +26,8 @@ const Header = ({currentUser}) => (
     </div>
 )
 
-export default Header;
+const mapStateToProps = state => ({ 
+    currentUser: state.user.currentUser
+})
+
+export default connect(mapStateToProps)(Header);
